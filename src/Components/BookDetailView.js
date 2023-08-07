@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { all } from "axios";
 import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
@@ -23,11 +23,14 @@ export default function BookDetailView() {
         "https://ebooksell-9b422-default-rtdb.asia-southeast1.firebasedatabase.app/books.json"
       )
       .then((res) => {
-        res.data.forEach((element) => {
+        const allData = Object.values(res.data);
+        allData.forEach((element) => {
           ans.push(element);
         });
         console.log(ans);
-        setProduct(ans[params.id - 1]);
+
+        
+        setProduct(ans.find((item)=>item.book_id==params.id));
       });
     
   }, []);
@@ -114,7 +117,7 @@ const handleAddToCart = async(e) =>{
                       <div className="ml-3 d-flex flex-row">
                         <strike>
                           {" "}
-                          <p>{Math.round(product.book_price*1.4)}Rs </p>{" "}
+                          <p>{Math.round(parseInt(product.book_price)*1.4)}Rs </p>{" "}
                         </strike>
                         <span> (40% OFF)</span>{" "}
                       </div>
@@ -154,7 +157,7 @@ const handleAddToCart = async(e) =>{
               </div>
             </div>
           </div>
-          <ConfirmationModal name={product.book_name} price={product.book_price} id={product.book_id} image={product.image}/>
+          <ConfirmationModal name={product.book_name} price={product.book_price} id={product.book_id} image={product.image} category={product.category}/>
         </div>
       </div>
     </div>

@@ -31,6 +31,7 @@ export const BookCard = () => {
     const handleAddToCart = async(e) =>{
         e.preventDefault();
 
+        console.log(e.target.value);
         if(localStorage.getItem("cart")==null){
             localStorage.setItem("cart","");
         }
@@ -52,13 +53,17 @@ export const BookCard = () => {
         
     }
     
+
     return (
         <center>
         <div style={{width:"80%",display:"flex",flexWrap:"wrap",marginTop:"20px"}}>
         {bookData.map((ele,index) => {
+            if(ele.book_name==null){
+                return ""
+            }
             // console.log(index,ele.book_id);
             return (
-                <div className="card " style={{ width: "15rem",margin:"15px" }}>
+                <div className="card " key={index} style={{ width: "15rem",margin:"15px" }}>
                     <img src={ele.image} onClick={()=>goToProductDetails(ele.book_id)} className="card-img-top" alt="..." height="260px"/>
                     <div className="card-body text-start" style={{ marginTop: "-5px" }}>
                         <p className="card-title m-0">{ele.book_name}</p>

@@ -28,6 +28,7 @@ export default function ConfirmationModal(props) {
                 orderId:md5(valToConvert),
                 user:user,
                 book_id:props.id,
+                category:props.category,
                 image:props.image,
                 book_name:props.name,
                 book_price:props.price

@@ -59,10 +59,10 @@ export default function Orders() {
                     <img src={ele.image} className="card-img-left" alt="..." height="180px" width="140px" />
                     <div className="card-body text-start" style={{ marginTop: "-15px" }}>
                         <p className='m-0' style={{fontSize:"14px"}}>Order Id </p>
-                        <p class="text-muted d-inline-block text-truncate" onClick={copyOrderID} style={{textAlign:"center",maxWidth:"150px",cursor:"pointer"}}>{ele.orderId}</p>
+                        <p className="text-muted d-inline-block text-truncate" onClick={copyOrderID} style={{textAlign:"center",maxWidth:"150px",cursor:"pointer"}}>{ele.orderId}</p>
                         <br></br>
                         <h5 className="card-title m-0">{ele.book_name}</h5>
-                        <p className="text-muted m-0">Adventure</p>
+                        <p className="text-muted m-0">{ele.category}</p>
                         <h4 className="card-text my-1">{ele.book_price}Rs</h4>
                     </div>
                 </div>

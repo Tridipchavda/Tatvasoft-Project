@@ -15,6 +15,8 @@ import BookDetailView from "./Components/BookDetailView";
 import { ToastContainer } from "react-toastify";
 import Orders from "./Components/Orders";
 import bookContext from "./Context/BookContext";
+import AddBook from "./Components/AddBook";
+import SeeSelfBooks from "./Components/seeSelfBooks";
 
 function App() {
   return (
@@ -34,7 +36,9 @@ function App() {
                 </>
               }
             />
+            <Route path="/addBook" element={<AddBook/>}/>
             <Route path="/register" element={<RegisterForm />} />
+            <Route path="/selfBooks" element={<SeeSelfBooks/>} />
             <Route path="/cart" element={<CartView/>}/>
             <Route path="/orders" element={<Orders/>}/>
             <Route path="/product/:id" element={<BookDetailView/>} />
